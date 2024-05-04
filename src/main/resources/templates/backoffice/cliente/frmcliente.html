@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/cliente/formcliente.js}" type="text/javascript"></script>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de clientes:
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblcliente" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">DNI</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cliente : ${listcliente}">
+                <td th:text="${cliente.codigocliente}"></td>
+                <td th:text="${cliente.nombrecli}"></td>
+                <td th:text="${cliente.apellidoscli}"></td>
+                <td th:text="${cliente.correo}"></td>
+                <td th:text="${cliente.direccion}"></td>
+                <td th:text="${cliente.telefono}"></td>
+                <td th:text="${cliente.dni}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-clientecod="${cliente.codigocliente}"
+                            th:data-clientename="${cliente.nombrecli}"
+                            th:data-clienteape="${cliente.apellidoscli}"
+                            th:data-clientecorreo="${cliente.correo}"
+                            th:data-clientedirec="${cliente.direccion}"
+                            th:data-clientetelef="${cliente.telefono}"
+                            th:data-clientedni="${cliente.dni}">Actualizar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal registro y actualización de cliente -->
+    <div class="modal fade" id="modalcliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtnombrecliente"
+                               placeholder="name@example.com">
+                        <label for="txtnombrecliente">Ingrese nombre del Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtapellidocliente"
+                               placeholder="name@example.com">
+                        <label for="txtapellidocliente">Ingrese apellido del Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtcorreocliente"
+                               placeholder="name@example.com">
+                        <label for="txtcorreocliente">Ingrese correo del Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtdireccioncliente"
+                               placeholder="name@example.com">
+                        <label for="txtdireccioncliente">Ingrese dirección del Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txttelefonocliente"
+                               placeholder="name@example.com">
+                        <label for="txttelefonocliente">Ingrese telefono del Cliente</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="txtdnicliente"
+                               placeholder="name@example.com">
+                        <label for="txtdnicliente">Ingrese DNI del Cliente</label>
+                    </div>
+                    <input type="hidden" id="hddidcliente" value="0">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
