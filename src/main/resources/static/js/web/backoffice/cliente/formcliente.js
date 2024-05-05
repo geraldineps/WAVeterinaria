@@ -61,14 +61,14 @@ function listarClientes(){
                 `<td>${value.direccion}</td>`+
                 `<td>${value.telefono}</td>`+
                 `<td>${value.dni}</td>`+
-                `<td><button type='button' class='btn btn-primary btnactualizar' `+
+                `<td><button type='button' class='btn btn-success btn-sm btnactualizar' `+
                     `data-clientecod="${value.codigocliente}" `+
                     `data-clientename="${value.nombrecli}" `+
                     `data-clienteape="${value.apellidoscli}" `+
                     `data-clientecorreo="${value.correo}" `+
                     `data-clientedirec="${value.direccion}"`+
                     `data-clientetelef="${value.telefono}"`+
-                    `data-clientedni="${value.dni}">Actualizar`+
+                    `data-clientedni="${value.dni}"><i class="bi bi-pencil-square"></i> Actualizar`+
                 `</button></td>`+
                 `</tr>`);
             });

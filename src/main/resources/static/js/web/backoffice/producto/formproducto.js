@@ -58,13 +58,13 @@ function listarProductos(){
                 `<td>${value.marca}</td>`+
                 `<td>${value.especie.descripcion}</td>`+
                 `<td>${value.precio}</td>`+
-                `<td><button type='button' class='btn btn-primary btnactualizar' `+
+                `<td><button type='button' class='btn btn-success btn-sm btnactualizar' `+
                     `data-prodcod="${value.codigoproducto}" `+
                     `data-prodnom="${value.nombreproducto}" `+
                     `data-prodcateg="${value.categoria.codigocategoria}" `+
                     `data-prodmarca="${value.marca}" `+
                     `data-prodespe="${value.especie.codigoespecie}" `+
-                    `data-prodprecio="${value.precio}">Actualizar`+
+                    `data-prodprecio="${value.precio}"><i class="bi bi-pencil-square"></i> Actualizar`+
                 `</button></td>`+
                 `</tr>`);
             });

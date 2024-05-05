@@ -74,8 +74,8 @@ function listarUsuarios(){
                 `<td>${value.nomusuario}</td>`+
                 `<td>${value.email}</td>`+
                 `<td>${value.activo}</td>`+
-                `<td><button type='button' class='btn btn-primary btnactualizar' `+
-                    `data-usuid="${value.idusuario}">Actualizar`+
+                `<td><button type='button' class='btn btn-success btn-sm btnactualizar' `+
+                    `data-usuid="${value.idusuario}"><i class="bi bi-pencil-square"></i> Actualizar`+
                 `</button></td>`+
                 `</tr>`);
             });

@@ -45,10 +45,10 @@ function listarServicios(){
                 `<td>${value.codigoservicio}</td>`+
                 `<td>${value.nombreservicio}</td>`+
                 `<td>${value.precio}</td>`+
-                `<td><button type='button' class='btn btn-primary btnactualizar' `+
+                `<td><button type='button' class='btn btn-success btn-sm btnactualizar' `+
                     `data-serviciocod="${value.codigoservicio}" `+
                     `data-servicioname="${value.nombreservicio}" `+
-                    `data-servicioprecio="${value.precio}">Actualizar`+
+                    `data-servicioprecio="${value.precio}"><i class="bi bi-pencil-square"></i> Actualizar`+
                 `</button></td>`+
                 `</tr>`);
             });

@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="">
-<head th:replace="~{layout::head}">
+<head th:replace="~{layout-static::head}">
     <meta charset="UTF-8">
     <title>Productos</title>
 </head>
 <body>
 <script th:src="@{/js/web/backoffice/producto/formproducto.js}" type="text/javascript"></script>
+<!--
 <nav th:replace="layout::menu"></nav>
+-->
+<nav th:replace="~{layout-static::menu}"></nav>
 
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Mantenimiento de Productos</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-        <li class="breadcrumb-item active">Mantenimiento</li>
-        <li class="breadcrumb-item active">Producto</li>
-    </ol>
-    <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+<div id="layoutSidenav">
+
+    <div th:replace="~{layout-static::menu2}"></div>
+
+<div id="layoutSidenav_content">
+<main>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Mantenimiento de Productos</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active">Mantenimiento</li>
+            <li class="breadcrumb-item active">Producto</li>
+        </ol>
+        <button id="btnagregar" type="button" class="btn btn-primary">
+            <i class="bi bi-plus-square"></i> Agregar</button>
     <hr>
     <div class="card mb-4">
         <div class="card-header">
@@ -23,10 +34,10 @@
             Productos
         </div>
         <div class="card-body">
-            <table id="tblproducto" class="table table-bordered">
+            <table id="tblproducto" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Código</th>
                     <th scope="col">Nombre de Producto</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Marca</th>
@@ -50,7 +61,8 @@
                                 th:data-prodcateg="${producto.categoria.codigocategoria}"
                                 th:data-prodmarca="${producto.marca}"
                                 th:data-prodespe="${producto.especie.codigoespecie}"
-                                th:data-prodprecio="${producto.precio}">Actualizar</button>
+                                th:data-prodprecio="${producto.precio}">
+                            <i class="bi bi-pencil-square"></i> Actualizar</button>
                     </td>
                 </tr>
                 </tbody>
@@ -88,8 +100,8 @@
 
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="txtprecio"
-                               placeholder="00.0">
+                        <input type="number" class="form-control" id="txtprecio"
+                               placeholder="0">
                         <label for="txtprecio">Ingrese precio del producto</label>
                     </div>
                     <input type="hidden" id="hddprodcod" value="0">
@@ -102,9 +114,12 @@
         </div>
     </div>
 
+    </div>
 
-
-
+</main>
+        <footer th:replace="~{layout::footer}"></footer>
 </div>
+</div>
+
 </body>
 </html>
