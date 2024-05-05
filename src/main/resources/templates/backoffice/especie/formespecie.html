@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head th:replace="~{layout::head}">
+    <meta charset="UTF-8">
+    <title>Especie de Mascotas</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Mantenimiento de Especies de Mascotas</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active">Mantenimiento</li>
+        <li class="breadcrumb-item active">Especie</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Especies
+        </div>
+
+        <!--
+        <div class="card">
+            <div class="card-header text-bg-danger">
+                Mantenimiento de categorias:
+            </div>
+            -->
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="table-active" scope="col">Id</th>
+                    <th class="table-active" scope="col">Nombre Especie</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="especie : ${especies}">
+                    <td th:text="${especie.codigoespecie}"></td>
+                    <td th:text="${especie.descripcion}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
