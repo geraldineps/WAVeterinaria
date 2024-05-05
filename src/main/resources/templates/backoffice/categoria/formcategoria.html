@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head th:replace="~{layout::head}">
+    <meta charset="UTF-8">
+    <title>Categoria de Productos</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Mantenimiento de Categorias</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active">Mantenimiento</li>
+        <li class="breadcrumb-item active">Categoria</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Categorias
+        </div>
+
+<!--
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de categorias:
+    </div>
+    -->
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="table-active" scope="col">Id</th>
+                    <th class="table-active" scope="col">Nombre Categoría</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.codigocategoria}"></td>
+                    <td th:text="${categoria.nombrecategoria}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
