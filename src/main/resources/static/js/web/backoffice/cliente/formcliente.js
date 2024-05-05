@@ -42,7 +42,7 @@ $(document).on("click", "#btnguardar", function(){
             alert(resultado.mensaje);
         }
     });
-    $("#modalcurso").modal("hide");
+    $("#modalcliente").modal("hide");
 });
 
 function listarClientes(){
