@@ -11,22 +11,28 @@
 <nav th:fragment="menu"
      class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Veterinaria</a>
+      
+<a class="navbar-brand" th:href="@{/auth/dashboard}">Huellas y Más Huellas</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+
+                    <a class="nav-link active" aria-current="page" th:href="@{/auth/dashboard}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mantenimiento Cliente
+                        Mantenimientos
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/cliente}">Clientes</a></li>
                         <li><a class="dropdown-item" th:href="@{/servicio}">Servicio</a></li>
+                        <li><a class="dropdown-item" th:href="@{/seguridad/usuario}">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
@@ -35,8 +41,14 @@
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
+
+            <span class="navbar-text" th:text="${session.nomusuario}"></span>&nbsp;
+            <form th:action="@{/logout}" method="post" class="d-flex" role="search">
+                <button class="btn btn-outline-success" type="submit">Cerrar Sesión</button>
+            </form>
         </div>
     </div>
 </nav>
+
 </body>
 </html>
