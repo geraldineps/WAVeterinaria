@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="~{layout::head}">
+<head th:replace="~{layout-static::head}">
     <meta charset="UTF-8">
     <title>Dashboard</title>
 </head>
 <body>
-<nav th:replace="~{layout::menu}"></nav>
 <!--
-<nav th:replace="~{layout-static::menu}"></nav>
-<div th:replace="~{layout-static::menu2}"></div>
+<nav th:replace="~{layout::menu}"></nav>
 -->
+<nav th:replace="~{layout-static::menu}"></nav>
+<div id="layoutSidenav">
+    <div th:replace="~{layout-static::menu2}"></div>
+    <div id="layoutSidenav_content">
+        <main>
+
+        </main>
+        <footer th:replace="~{layout::footer}"></footer>
+    </div>
+</div>
+
 </body>
 </html>
