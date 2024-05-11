@@ -1,6 +1,8 @@
 package pe.edu.cibertec.WAVeterinaria.service;
 
 import pe.edu.cibertec.WAVeterinaria.model.bd.Usuario;
+import pe.edu.cibertec.WAVeterinaria.model.dto.request.PasswordRequest;
+import pe.edu.cibertec.WAVeterinaria.model.dto.request.UsuarioRequest;
 
 import java.util.List;
 
@@ -11,4 +13,5 @@ public interface IUsuarioService {
     Usuario obtenerUsuarioxId(int id);
 
     void actualizarUsuario(Usuario usuario);
+
 }

@@ -1,6 +1,7 @@
 package pe.edu.cibertec.WAVeterinaria.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pe.edu.cibertec.WAVeterinaria.model.bd.Producto;
 import pe.edu.cibertec.WAVeterinaria.repository.ProductoRepository;
@@ -21,5 +22,10 @@ public class ProductoService implements IProductoService {
     public void registrarProducto(Producto producto) {
         productoRepository.save(producto);
 
+    }
+
+    @Override
+    public List<Producto> listaProductos(String filtro, Pageable pageable) {
+        return productoRepository.listaProducto(filtro,pageable);
     }
 }

@@ -75,3 +75,12 @@ function listarClientes(){
         }
     });
 }
+
+//Solo numeros en caja de texto
+function validarSoloNumerosEnteros(e) { // 1
+	tecla = (document.all) ? e.keyCode : e.which; // 2
+	if (tecla == 8) return true; // 3
+	patron = /[0-9]/;// Solo acepta números
+	te = String.fromCharCode(tecla); // 5
+	return patron.test(te); // 6
+}

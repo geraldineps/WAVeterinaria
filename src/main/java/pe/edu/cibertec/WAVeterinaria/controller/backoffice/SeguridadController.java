@@ -1,6 +1,7 @@
 package pe.edu.cibertec.WAVeterinaria.controller.backoffice;
 
 import pe.edu.cibertec.WAVeterinaria.model.bd.Usuario;
+import pe.edu.cibertec.WAVeterinaria.model.dto.request.PasswordRequest;
 import pe.edu.cibertec.WAVeterinaria.model.dto.request.UsuarioRequest;
 import pe.edu.cibertec.WAVeterinaria.model.dto.response.ResultadoResponse;
 import pe.edu.cibertec.WAVeterinaria.service.IUsuarioService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -29,6 +31,7 @@ public class SeguridadController {
     @GetMapping("/usuario/{id}")
     @ResponseBody
     public Usuario obtenerUsuarioxId(@PathVariable("id") int id){
+
         return iUsuarioService.obtenerUsuarioxId(id);
     }
     @PostMapping("/usuario/registrar")
@@ -65,6 +68,14 @@ public class SeguridadController {
     }
 
 
-
+    @GetMapping("/password")
+    public String formPassword(){
+        return "backoffice/seguridad/formpassword";
+    }
+    @PostMapping("/usuario/password")
+    @ResponseBody
+    public ResultadoResponse cambiarPassword(){
+         return null;
+    }
 
 }

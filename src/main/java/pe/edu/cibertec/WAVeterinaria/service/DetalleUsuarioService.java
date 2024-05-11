@@ -41,13 +41,14 @@ public class DetalleUsuarioService implements UserDetailsService {
     ){
         UsuarioSecurity usuarioSecurity = new UsuarioSecurity(
 
-                usuario.getNomusuario(),
+                usuario.getNomusuario(), usuario.getIdusuario(),
                 usuario.getPassword(), usuario.getActivo(),
                 true, true,
                 true, authorityList
         );
         usuarioSecurity.setEmail(usuario.getEmail());
         usuarioSecurity.setNombre(usuario.getNombres());
+        usuarioSecurity.setIdusuario(usuario.getIdusuario());
         return usuarioSecurity;
     }
 

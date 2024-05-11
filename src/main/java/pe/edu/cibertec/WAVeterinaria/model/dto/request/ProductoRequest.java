@@ -16,4 +16,6 @@ public class ProductoRequest {
     private Integer codigoespecie;
 
     private Double precio;
+
+    private int stock;
 }

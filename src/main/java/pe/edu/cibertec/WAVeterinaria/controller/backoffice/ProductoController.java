@@ -50,12 +50,13 @@ public class ProductoController {
             product.setCategoria(categoria);
 
             product.setMarca(productRequest.getMarca());
-            /*Traer id de categoria*/
+            /*Traer id de especie*/
             Especie especie = new Especie();
             especie.setCodigoespecie(productRequest.getCodigoespecie());
             product.setEspecie(especie);
 
             product.setPrecio(productRequest.getPrecio());
+            product.setStock(productRequest.getStock());
 
             iProductoService.registrarProducto(product);
 
