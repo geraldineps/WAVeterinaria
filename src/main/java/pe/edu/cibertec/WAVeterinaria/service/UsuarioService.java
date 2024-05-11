@@ -64,5 +64,17 @@ public class UsuarioService implements IUsuarioService{
         );
     }
 
+    @Override
+    public void cambiarPassword(Usuario usuario) {
+        usuarioRepository.cambiarPassword(
+                usuario.getPassword(), usuario.getIdusuario()
+        );
+    }
+
+    @Override
+    public Usuario obtenerPasswordxId(int id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
 
 }

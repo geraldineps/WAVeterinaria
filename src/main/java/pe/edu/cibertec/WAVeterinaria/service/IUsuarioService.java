@@ -14,4 +14,7 @@ public interface IUsuarioService {
 
     void actualizarUsuario(Usuario usuario);
 
+    void cambiarPassword(Usuario usuario);
+    Usuario obtenerPasswordxId(int id);
+
 }
