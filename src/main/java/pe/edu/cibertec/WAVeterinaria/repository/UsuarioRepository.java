@@ -23,4 +23,13 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
                            @Param("apellidos")String apellidos,
                            @Param("activo")boolean activo,
                            @Param("idusuario")int idusuario);
+
+//    @Transactional
+//    @Modifying
+//    @Query(value = "UPDATE usuario SET password=:password" +
+//            "WHERE nomusuario=:nomusuario AND password=:password2",
+//            nativeQuery = true)
+//    void cambiarPassword(@Param("password")String passwordNuevo,
+//                         @Param("nomusuario")String nomusuario,
+//                         @Param("password")String password);
 }

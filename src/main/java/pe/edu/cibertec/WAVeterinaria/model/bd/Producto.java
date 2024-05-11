@@ -30,6 +30,9 @@ public class Producto {
     @Column(name = "precio")
     private Double precio;
 
+    @Column(name = "stock")
+    private int stock;
+
 
 
 

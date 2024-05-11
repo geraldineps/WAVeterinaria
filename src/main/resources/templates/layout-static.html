@@ -32,18 +32,14 @@
                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Perfil</a></li>
-                <li><a class="dropdown-item" href="#!">Cambiar Contraseña</a></li>
+                <li><a class="dropdown-item" th:href="@{/seguridad/password}">Cambiar Contraseña</a></li>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
                 <li>
                     <form th:action="@{/logout}" method="post" class="d-flex" role="search">
-                        <button class="btn btn-link" type="submit">Cerrar Sesión</button>
+                        <button class="btn btn-link text-dark" style="text-decoration: none" type="submit">Cerrar Sesión</button>
                     </form>
-                    <!--
-                    <button class="btn btn-light" type="submit">Cerrar Sesión</button>
-                    <a class="dropdown-item" th:action="@{/logout}" method="post">Cerrar Sesión</a>
-                    -->
                 </li>
 
             </ul>
@@ -77,19 +73,29 @@
                             <a class="nav-link" th:href="@{/servicio}">Servicios</a>
                             <a class="nav-link" th:href="@{/cliente}">Clientes</a>
                             <a class="nav-link" th:href="@{/seguridad/usuario}">Usuarios</a>
-                            <a class="nav-link" href="#">Mascotas</a>
                         </nav>
                     </div>
 
-                    <div class="sb-sidenav-menu-heading">Ventas</div>
-                    <a class="nav-link" href="#">
+                    <div class="sb-sidenav-menu-heading">VENTAS</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2"
+                       aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Venta Productos
+                        Registrar Boleta
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
+                    <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" th:href="@{/boletaproducto/verBoleta}">Producto</a>
+                            <a class="nav-link" href="#">Servicio</a>
+                        </nav>
+                    </div>
+
+                    <!--
                     <a class="nav-link" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Venta Servicios
-                    </a>
+                    </a>-->
                 </div>
             </div>
             <!--

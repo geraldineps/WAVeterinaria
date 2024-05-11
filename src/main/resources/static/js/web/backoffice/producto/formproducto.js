@@ -4,6 +4,7 @@ $(document).on("click", "#btnagregar", function(){
     $("#hddprodcod").val("0");
     listarCboCategoryEspecie(0, 0);
     $("#txtprecio").val("");
+    $("#txtstock").val("");
     $("#modalproduct").modal("show");
 });
 
@@ -13,6 +14,7 @@ $(document).on("click", ".btnactualizar", function(){
     $("#txtmarca").val($(this).attr("data-prodmarca"));
     $("#hddprodcod").val($(this).attr("data-prodcod"));
     $("#txtprecio").val($(this).attr("data-prodprecio"));
+    $("#txtstock").val($(this).attr("data-prodstock"));
     $("#cbocategory").empty();
     $("#cboespecie").empty();
     listarCboCategoryEspecie($(this).attr("data-prodcateg"),
@@ -32,6 +34,7 @@ $(document).on("click", "#btnguardar", function(){
             marca: $("#txtmarca").val(),
             codigoespecie: $("#cboespecie").val(),
             precio: $("#txtprecio").val(),
+            stock: $("#txtstock").val(),
         }),
         success: function(resultado){
             if(resultado.respuesta){
@@ -58,13 +61,15 @@ function listarProductos(){
                 `<td>${value.marca}</td>`+
                 `<td>${value.especie.descripcion}</td>`+
                 `<td>${value.precio}</td>`+
+                `<td>${value.stock}</td>`+
                 `<td><button type='button' class='btn btn-success btn-sm btnactualizar' `+
                     `data-prodcod="${value.codigoproducto}" `+
                     `data-prodnom="${value.nombreproducto}" `+
                     `data-prodcateg="${value.categoria.codigocategoria}" `+
                     `data-prodmarca="${value.marca}" `+
                     `data-prodespe="${value.especie.codigoespecie}" `+
-                    `data-prodprecio="${value.precio}"><i class="bi bi-pencil-square"></i> Actualizar`+
+                    `data-prodprecio="${value.precio}" `+
+                    `data-prodstock="${value.stock}"><i class="bi bi-pencil-square"></i> Actualizar`+
                 `</button></td>`+
                 `</tr>`);
             });

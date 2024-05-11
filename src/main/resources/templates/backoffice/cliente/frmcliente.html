@@ -21,8 +21,8 @@
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Mantenimiento de Clientes</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Mantenimiento</li>
+                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item">Mantenimiento</li>
                     <li class="breadcrumb-item active">Cliente</li>
                 </ol>
                 <button id="btnagregar" type="button" class="btn btn-primary">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="txtdnicliente"
-                                   placeholder="name@example.com">
+                                   placeholder="name@example.com" maxlength="8" onkeypress="return validarSoloNumerosEnteros(event);" >
                             <label for="txtdnicliente">Ingrese DNI del Cliente</label>
                         </div>
                         <input type="hidden" id="hddidcliente" value="0">
