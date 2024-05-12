@@ -14,6 +14,8 @@ public class UsuarioSecurity extends User {
     private String email;
     private String nombre;
     private Integer idusuario;
+    private String nombreusuario;
+    private String apellido;
     public UsuarioSecurity(String username, Integer idusuario, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }

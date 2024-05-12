@@ -1,5 +1,7 @@
 package pe.edu.cibertec.WAVeterinaria.controller.backoffice;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pe.edu.cibertec.WAVeterinaria.model.bd.Usuario;
 import pe.edu.cibertec.WAVeterinaria.model.dto.request.PasswordRequest;
@@ -107,4 +109,9 @@ public class SeguridadController {
                 .respuesta(respuesta).build();
     }
 
+    @GetMapping("/perfil")
+    public String showprofile(){
+
+        return "backoffice/auth/formperfil";
+    }
 }
