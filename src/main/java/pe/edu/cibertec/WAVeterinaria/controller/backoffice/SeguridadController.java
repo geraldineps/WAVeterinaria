@@ -1,5 +1,6 @@
 package pe.edu.cibertec.WAVeterinaria.controller.backoffice;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pe.edu.cibertec.WAVeterinaria.model.bd.Usuario;
 import pe.edu.cibertec.WAVeterinaria.model.dto.request.PasswordRequest;
 import pe.edu.cibertec.WAVeterinaria.model.dto.request.UsuarioRequest;
@@ -20,6 +21,7 @@ import java.util.List;
 public class SeguridadController {
 
     private IUsuarioService iUsuarioService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/usuario")
     public String frmUsuario(Model model){
@@ -72,10 +74,37 @@ public class SeguridadController {
     public String formPassword(){
         return "backoffice/seguridad/formpassword";
     }
+
     @PostMapping("/usuario/password")
     @ResponseBody
-    public ResultadoResponse cambiarPassword(){
-         return null;
+    public ResultadoResponse cambiarPassword(@RequestBody
+                                             PasswordRequest passwordRequest){
+        String mensaje = "Contraseña actualizada correctamente";
+        boolean respuesta = true;
+
+        try{
+            Usuario usuario = iUsuarioService.obtenerPasswordxId(passwordRequest.getIdusuario());
+            if(bCryptPasswordEncoder.matches(passwordRequest.getPasswordActual() , usuario.getPassword())){
+
+                if(passwordRequest.getPasswordNuevo().equals(passwordRequest.getPasswordConfirmacion())) {
+                    usuario.setPassword(bCryptPasswordEncoder.encode(passwordRequest.getPasswordNuevo()));
+                    iUsuarioService.cambiarPassword(usuario);
+                } else {
+                    mensaje = "La contraseña nueva no coincide";
+                    respuesta = false;
+                }
+            } else {
+                mensaje = "La contraseña actual incorrecta";
+                respuesta = false;
+            }
+
+        }catch (Exception ex){
+            mensaje = "Contraseña no registrado, error en la BD";
+            respuesta = false;
+        }
+
+        return ResultadoResponse.builder().mensaje(mensaje)
+                .respuesta(respuesta).build();
     }
 
 }
