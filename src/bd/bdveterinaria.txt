@@ -1,0 +1,164 @@
+Create DataBase BDVeterinaria;
+Use BDVeterinaria;
+
+create table cliente
+( codigocliente int PRIMARY key auto_increment,
+nombrecli varchar(30),
+apellidoscli varchar(30),
+correo varchar(50),
+direccion varchar(30),
+telefono varchar(15),
+dni varchar(8));
+
+insert cliente values (1, 'Marcos', 'Sánchez', 'MarcoSanchez123@gmail.com','av. tulipanes 258','985 258 147','25897463');
+insert cliente values (2, 'María', 'Chavez', 'MaríaChavez124@hotmail.com','av. las flores 123','935 741 421','74896321');
+insert cliente values (3, 'José', 'Fernandez', 'Joséernandez247@gmail.com' ,'av. rosales 478','985 999 658','25896347');
+insert cliente values (4, 'Julio', 'Tello', 'JulioTello742@hotmail.com','av. bertello 45','924 478 639','74859612');
+insert cliente values (5, 'Maria', 'Gomez', 'MariaGomez85@gmail.com', 'calle San Martin 123', '921 365 214', '84571236');
+insert cliente values (6, 'Carlos', 'Ruiz', 'CarlosR1980@yahoo.com', 'jr. Los Álamos 204', '952 487 165', '36754892');
+insert cliente values (7, 'Ana', 'Pérez', 'AnaPerez73@outlook.com', 'av. Las Flores 567', '987 654 321', '15963247');
+insert cliente values (8, 'Jose', 'Moreno', 'JoseM_92@hotmail.com', 'calle Los Laureles 890', '914 258 796', '27485916');
+insert cliente values (9, 'Patricia', 'Ortiz', 'PattyOrtiz24@gmail.com', 'av. Bolívar 111', '968 574 231', '48579612');
+insert cliente values (10, 'Luis', 'Fernandez', 'LuisFdez76@hotmail.com', 'calle Los Pinos 444', '924 678 354', '56879431');
+insert cliente values (11, 'Laura', 'Martinez', 'LauraMtz_89@yahoo.com', 'av. Principal 780', '911 345 678', '64857912');
+insert cliente values (12, 'Diego', 'Vega', 'DiegoV123@gmail.com', 'jr. La Unión 55', '953 286 417', '76948521');
+insert cliente values (13, 'Sofia', 'Lopez', 'SofiaLopez_94@hotmail.com', 'av. Libertad 300', '968 534 219', '75896412');
+insert cliente values (14, 'Miguel', 'Torres', 'MiguelT85@gmail.com', 'calle Nueva 645', '920 438 765', '87459632');
+insert cliente values (15, 'Carmen', 'Jimenez', 'CarmenJ_87@yahoo.com', 'av. Los Alamos 458', '937 512 846', '96587413');
+insert cliente values (16, 'Francisco', 'Diaz', 'PacoDiaz71@hotmail.com', 'jr. Las Dalias 212', '975 467 189', '15489672');
+insert cliente values (17, 'Sandra', 'Romero', 'SandraRo88@gmail.com', 'calle Margaritas 678', '981 467 543', '31659785');
+insert cliente values (18, 'Ricardo', 'Soto', 'RickySoto45@hotmail.com', 'av. San Miguel 142', '976 359 821', '49856172');
+insert cliente values (19, 'Andrea', 'Garcia', 'AndyGarcia_93@yahoo.com', 'calle Los Cedros 900', '947 286 543', '63594871');
+insert cliente values (20, 'Oscar', 'Morales', 'OscarM76@gmail.com', 'jr. Las Begonias 321', '952 467 821', '48571269');
+insert cliente values (21, 'Veronica', 'Castro', 'VeroCastro82@hotmail.com', 'av. El Sol 112', '924 678 396', '64859713');
+insert cliente values (22, 'Jorge', 'Rodriguez', 'JorgeRdz_77@yahoo.com', 'calle Los Lirios 433', '910 345 672', '75984312');
+insert cliente values (23, 'Natalia', 'Vargas', 'NatyVargas_85@gmail.com', 'av. Del Pueblo 223', '938 467 124', '84759236');
+insert cliente values (24, 'Hector', 'Salazar', 'HectorSal90@hotmail.com', 'jr. Las Camelias 987', '976 352 467', '39715482');
+
+
+create table servicio(
+codigoservicio int PRIMARY KEY auto_increment,
+nombreservicio varchar(100),
+precio double);
+
+insert into Servicio values (1,'Corte de pelo',50);
+insert into Servicio values (2,'Cirugía',200);
+insert into Servicio values (3,'Baño',50);
+insert into Servicio values (4,'Desparazitación',30);
+insert into Servicio values (5,'Consulta Médica',20);
+insert into Servicio values (6,'Esterilización',100);
+insert into Servicio values (7,'Radiografía',100);
+
+create table especie
+( codigoespecie int primary key auto_increment,
+descripcion varchar(30));
+
+insert especie values (1,'Perro');
+insert especie values (2,'Gato');
+insert especie values (3,'Otros');
+
+create table categoria(
+codigocategoria int primary key auto_increment,
+nombrecategoria varchar (50)
+);
+
+insert into categoria values (1,'Alimento');
+insert into categoria values (2,'Accesorios');
+insert into categoria values (3,'Juguetes');
+
+create table producto(
+codigoproducto int primary key auto_increment,
+nombreproducto varchar (200),
+codigocategoria int,
+marca varchar(100),
+codigoespecie int,
+precio decimal(10,4),
+stock int,
+FOREIGN KEY(codigocategoria) REFERENCES categoria(codigocategoria),
+FOREIGN KEY(codigoespecie) REFERENCES especie(codigoespecie));
+
+insert into producto values (1,'Festival de Sabores 9kg',2,'Ricocat',1,92,18);
+insert into producto values (2, 'Alimento Premium Gato', 1, 'Royal Canin', 2, 210.00, 20);
+insert into producto values (3, 'Juguete para Perro', 3, 'Kong', 1, 80.00, 15);
+insert into producto values (4, 'Collar Antipulgas', 2, 'Seresto', 1, 120.50, 24);
+insert into producto values (5, 'Rascador de Cartón', 2, 'Catit', 2, 45.75, 18);
+insert into producto values (6, 'Hamaca para Gato', 2, 'PetPals', 2, 130.00, 12);
+insert into producto values (7, 'Pelota Interactiva', 3, 'iFetch', 1, 200.00, 10);
+insert into producto values (8, 'Comida para Hamsters', 1, 'TinyPets', 3, 50.00, 20);
+insert into producto values (9, 'Cama para Perro', 2, 'DogLuxe', 1, 250.00, 10);
+insert into producto values (10, 'Peluquería Canina Kit', 2, 'GroomPro', 1, 300.00, 5);
+insert into producto values (11, 'Alimento Natural Gato', 1, 'Nulo', 2, 180.00, 22);
+insert into producto values (12, 'Arena Aglomerante', 2, 'FreshStep', 2, 85.00, 24);
+insert into producto values (13, 'Juguete de Cuerda', 3, 'Mammoth', 1, 40.00, 20);
+insert into producto values (14, 'Plato de Comida Elegante', 2, 'PetRageous', 2, 70.00, 15);
+insert into producto values (15, 'Alimento para Tortugas', 1, 'ReptoMin', 3, 60.00, 10);
+insert into producto values (16, 'Casa para Aves', 2, 'NatureGear', 3, 190.00, 6);
+insert into producto values (17, 'Juguete Láser para Gatos', 3, 'PetSafe', 2, 35.00, 14);
+insert into producto values (18, 'Chaleco Salvavidas para Perro', 2, 'Outward Hound', 1, 150.00, 8);
+insert into producto values (19, 'Cepillo para Gatos', 2, 'FURminator', 2, 60.00, 16);
+insert into producto values (20, 'Alimento para Peces de Acuario', 1, 'Tetra', 3, 25.00, 24);
+insert into producto values (21, 'Túnel de Juego para Gatos', 3, 'SmartyKat', 2, 50.00, 9);
+
+
+create table boletap(
+codigoboletap int PRIMARY KEY auto_increment,
+fechaPago date,
+idusuario int,
+codigocliente int,
+FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
+FOREIGN KEY(codigocliente) REFERENCES cliente(codigocliente));
+
+
+create table detalleboletap(
+codigoboletap int,
+codigoproducto int,
+cantidad int,
+precio decimal(10,4),
+FOREIGN KEY(codigoboletap) REFERENCES boletap(codigoboletap),
+FOREIGN KEY(codigoproducto) REFERENCES producto(codigoproducto));
+
+
+create table boletaservicio(
+codigoboletaservicio int PRIMARY KEY auto_increment,
+fechaPago date,
+idusuario int,
+codigocliente int,
+FOREIGN KEY(idusuario) REFERENCES usuario(idusuario),
+FOREIGN KEY(codigocliente) REFERENCES cliente(codigocliente));
+
+
+create table detalleboletaservicio(
+codigoboletaservicio int,
+codigoservicio int,
+precio double,
+FOREIGN KEY(codigoboletaservicio) REFERENCES boletaservicio(codigoboletaservicio),
+FOREIGN KEY(codigoservicio) REFERENCES servicio(codigoservicio));
+
+
+
+CREATE TABLE usuario (
+	idusuario INT auto_increment NOT NULL,
+	nomusuario varchar(100) NULL,
+	email varchar(200) NULL,
+	password varchar(300) NULL,
+	nombres varchar(100) NULL,
+	apellidos varchar(100) NULL,
+	activo BOOL NULL,
+	CONSTRAINT users_pk PRIMARY KEY (idusuario)
+);
+
+
+CREATE TABLE rol (
+	idrol INT auto_increment NOT NULL,
+	nomrol varchar(300) NULL,
+	CONSTRAINT roles_pk PRIMARY KEY (idrol)
+);
+
+
+CREATE TABLE usuario_rol (
+	idusuario INT NOT NULL,
+	idrol INT NOT NULL,
+	CONSTRAINT user_role_pk PRIMARY KEY (idusuario, idrol),
+	CONSTRAINT user_role_FK FOREIGN KEY (idusuario) REFERENCES bdveterinaria.usuario(idusuario),
+	CONSTRAINT user_role_FK_1 FOREIGN KEY (idrol) REFERENCES bdveterinaria.rol(idrol)
+);
