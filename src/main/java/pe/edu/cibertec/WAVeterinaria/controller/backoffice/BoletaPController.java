@@ -85,9 +85,8 @@ public class BoletaPController {
 
     @RequestMapping("/registraBoleta")
     @ResponseBody()
-    public Mensaje boleta(Cliente cliente, Usuario usuario /*HttpSession session*/) {
+    public Mensaje boleta(Cliente cliente, Usuario usuario) {
 
-        //Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
         Mensaje objMensaje = new Mensaje();
 
             List<DetalleBoletaP> detalles = new ArrayList<DetalleBoletaP>();
