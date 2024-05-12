@@ -37,6 +37,10 @@ public class LoginController {
         UsuarioSecurity usuarioSecurity = (UsuarioSecurity) userDetails;
         session.setAttribute("nomusuario", usuarioSecurity.getNombre());
         session.setAttribute("id", usuarioSecurity.getIdusuario());
+        session.setAttribute("usuario", usuarioSecurity.getNombreusuario());
+        session.setAttribute("apellido", usuarioSecurity.getApellido());
+        session.setAttribute("email", usuarioSecurity.getEmail());
+
         return "backoffice/auth/home";
     }
 

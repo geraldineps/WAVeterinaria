@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout-static::head}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/js/web/backoffice/seguridad/formperfil.js}" type="text/javascript"></script>
+<nav th:replace="~{layout-static::menu}"></nav>
+
+<div id="layoutSidenav">
+    <div th:replace="~{layout-static::menu2}"></div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Perfil de Usuario</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item">Usuario</li>
+                    <li class="breadcrumb-item active">Perfil</li>
+                </ol>
+
+                <!--DATOS USUARIO EN SESION-->
+                <input type="hidden" id="id_usuario_id" th:value="${session.id}" class="form-control" readonly="readonly" />
+                <input type="hidden" id="id_usuario_nombre" th:value="${session.nomusuario}" class="form-control" readonly="readonly" />
+                <input type="hidden" id="hddidusuario" th:value="${session.id}">
+
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="bi bi-person-fill"></i>
+                        Datos
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="nomusuario" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="nomusuario" th:value="${session.usuario}" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombres Completo</label>
+                            <input type="text" class="form-control" id="nombre" th:value="${session.nomusuario}"  readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellidos Completo</label>
+                            <input type="text" class="form-control" id="apellido" th:value="${session.apellido}" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" th:value="${session.email}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer th:replace="~{layout::footer}"></footer>
+    </div>
+</div>
+</body>
+</html>
