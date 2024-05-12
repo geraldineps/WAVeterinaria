@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head th:replace="~{layout-static::head}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script th:src="@{/js/web/backoffice/venta/boletaservicio.js}" type="text/javascript"></script>
+
+<nav th:replace="~{layout-static::menu}"></nav>
+<div id="layoutSidenav">
+    <div th:replace="~{layout-static::menu2}"></div>
+    <div id="layoutSidenav_content">
+        <main>
+<!--*******************************************************************************************-->
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Registro de Boleta - Servicio</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item">Venta</li>
+                    <li class="breadcrumb-item active">Servicio</li>
+                </ol>
+                <hr>
+                <form id="id_form" accept-charset="UTF-8" action="boleta" class="form-horizontal" method="post">
+                    <!--CARD USUARIO-->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="bi bi-person-fill"></i>
+                            Datos del Usuario
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="form-group  col-md-6">
+                                    <label class="col-lg-4 control-label">Código</label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="id_usuario_id" th:value="${session.id}" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="col-lg-4 control-label">Nombre</label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="id_usuario_nombre" th:value="${session.nomusuario}" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--CARD CLIENTE-->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="bi bi-person-add"></i>
+                            Datos del Cliente
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class=" col-lg-9 col-lg-offset-3">
+                                    <button type="button" id="id_btnCliente" class='btn btn-primary btn-sm' style="width: 250px">
+                                        <i class="bi bi-search"></i> Buscar Cliente</button>
+                                    <button type="button" id="id_btnNuevo" class='btn btn-success btn-sm' style="width: 50px">
+                                        <i class="bi bi-person-fill-add"></i></button>
+                                    <input type="hidden" name="idCliente" id="id_cliente_id" class="form-control"
+                                           value="-1" />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="form-group  col-md-6">
+                                    <label class="col-lg-4 control-label">DNI</label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="id_cliente_dni" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="col-lg-4 control-label">Nombre</label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="id_cliente_nombre" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="col-lg-4 control-label">Apellido</label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="id_cliente_apellido" class="form-control" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--CARD PRODUCTO-->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="bi bi-cart-plus"></i>
+                            Datos del Servicio
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group  col-md-4">
+                                <div class="col-lg-2">
+                                    <button type="button" id="id_btnServicio" data-toggle='modal' class='btn btn-primary btn-sm' style="width: 250px">
+                                        <i class="bi bi-search"></i> Buscar Servicio</button>
+                                    <input type="hidden" name="idServicio" id="id_servicio_id" class="form-control"
+                                           value="-1" />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                            <div class="form-group  col-md-6">
+                                <label class="col-lg-3 control-label">Nombre</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="nombreServicio" id="id_servicio_nombre" class="form-control"
+                                           readonly="readonly" />
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="col-lg-3 control-label">Precio</label>
+                                <div class="col-md-12">
+                                    <input type="text" name="precio" id="id_servicio_precio" class="form-control"
+                                           readonly="readonly" />
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--AGREGAR PRODUCTOS BOLETA-->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Detalle de Boleta Servicio
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class=" col-lg-9 col-lg-offset-3">
+                                    <button type="button" id="id_btnAgregar" class="btn btn-primary btn-sm" style="width: 250px">
+                                        <i class="bi bi-plus-lg"></i> Agregar Servicio</button>
+                                    <button type="button" id="id_btnRegistrar" class="btn btn-success btn-sm" style="width: 250px"
+                                            >
+                                        <i class="bi bi-check-lg"></i> Registrar Boleta</button>
+                                </div>
+                            </div>
+                            <hr/>
+                            <table id="id_table_boleta" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Servicio</th>
+                                    <th scope="col">Precio</th>
+                                    <th style="width: 5%"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="id_table_boleta_body">
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Modal búsqueda de Cliente -->
+                    <div class="modal fade" id="idBuscaCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Clientes</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">
+                                            Cliente
+                                        </label>
+                                        <div class="col-lg-12">
+                                            <input id="id_txtCliente" class="form-control" name="cliente" type="text" />
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <table id="id_table_cliente" class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 10%">Id</th>
+                                                    <th style="width: 30%">Nombre</th>
+                                                    <th style="width: 30%">Apellido</th>
+                                                    <th style="width: 20%">DNI</th>
+                                                    <th style="width: 10%"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal búsqueda de Servicio-->
+                    <div class="modal fade" id="idBuscaServicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Servicios</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">
+                                            Servicio
+                                        </label>
+                                        <div class="col-lg-12">
+                                            <input id="id_txtServicio" class="form-control" name="servicio"
+                                                   type="text" />
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <table id="id_table_servicio" class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 15%">Id</th>
+                                                    <th style="width: 45%">Nombre</th>
+                                                    <th style="width: 15%">Precio</th>
+                                                    <th style="width: 10%"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal Mensaje -->
+                    <div class="modal fade" id="idMensaje" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Mensaje</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="x"></button>
+                                </div>
+                                <div id="idMensajeTexto" class="modal-body" style="padding: 30px 30px;align-content: center;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal registro y actualización de cliente -->
+                    <div class="modal fade" id="modalcliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Cliente</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtnombrecliente"
+                                               placeholder="name@example.com">
+                                        <label for="txtnombrecliente">Ingrese nombre del Cliente</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtapellidocliente"
+                                               placeholder="name@example.com">
+                                        <label for="txtapellidocliente">Ingrese apellido del Cliente</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtcorreocliente"
+                                               placeholder="name@example.com">
+                                        <label for="txtcorreocliente">Ingrese correo del Cliente</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtdireccioncliente"
+                                               placeholder="name@example.com">
+                                        <label for="txtdireccioncliente">Ingrese dirección del Cliente</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txttelefonocliente"
+                                               placeholder="name@example.com">
+                                        <label for="txttelefonocliente">Ingrese telefono del Cliente</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtdnicliente"
+                                               placeholder="name@example.com">
+                                        <label for="txtdnicliente">Ingrese DNI del Cliente</label>
+                                    </div>
+                                    <input type="hidden" id="hddidcliente" value="0">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" id="btnguardarCliente">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+<!--*******************************************************************************************-->
+
+        </main>
+        <footer th:replace="~{layout::footer}"></footer>
+    </div>
+</div>
+</body>
+</html>
